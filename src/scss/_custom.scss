@@ -1,0 +1,201 @@
+#{$preffix}{
+  &-header-wrapper{
+    @include bg-img('white-about-us.png', repeat, left top);
+    background-size: 80% auto;
+    min-height:$header-height + px;
+    position:fixed;
+    left:0;
+    top:0;
+    right:0;
+    z-index: $header-zIndex + 1;
+  }
+  &-view-cart{
+    transition: all 0.2s;
+    background-color:$default-color;
+    border-radius: 10px;
+    font-size:24px;
+    text-transform: uppercase;
+    border-color:transparent;
+    padding:3px 12px;
+    color:$primary-color;
+    &:hover, &:focus{
+      background-color:$coporate-color;
+    }
+  }
+  &-hotline-wrapper{
+    background-color:rgba($default-color, 0.85);
+    padding:5px 0;
+    color:$primary-color;
+    text-align:center;
+    position:fixed;
+    left:0;
+    top:$header-height + 5 + px;
+    right:0;
+    z-index: $header-zIndex;
+    div{
+      text-transform: uppercase;
+      font: 300 23px 'Archivo Black', sans-serif;
+      @media (max-width: 767px) {
+        font: 300 18px 'Archivo Black', sans-serif;
+      }
+    }
+    @media (max-width: 1200px) {
+      top:$header-height + px;
+    }
+  }
+  &-Banner-wrapper{
+    @include bg-img('home-image.jpg', no-repeat, center top);
+    background-size: cover;
+    min-height:570px;
+    position:relative;
+    top:$header-height + px;
+  }
+  &-signature-kottu, &-own-kottu{
+    @include bg-img('menu_bg.png', no-repeat, center top);
+    background-size: cover;
+    max-width:400px;
+    height: 350px;
+    text-align:center;
+    margin:100px 5% 0;
+    @extend .inline-block;
+    vertical-align:middle;
+    width:49%;
+    cursor:pointer;
+    img{
+      height:270px;
+      margin-top:40px;
+    }
+    h3{
+      font:normal 28px 'Jockey One', sans-serif;
+      color:$primary-color;
+      padding-top:25px;
+    }
+    @media (max-width: 1199px) {
+      height: 340px;
+      margin:100px 5% 0;
+      width: 35%;
+    }
+    @media (max-width: 991px) {
+      height: auto;
+      margin:40px 5% 0;
+      width: 50%;
+      background-size: contain;
+      h3{
+        font-size:24px;
+        padding:0;
+        margin:0;
+      }
+      img{
+        margin-top:20px;
+        height: auto;
+      }
+    }
+  }
+  &-desc-wrapper{
+    position: relative;
+    top:$header-height + px;
+    @include bg-img('red-cover-about.png', repeat, center top);
+    background-size: cover;
+    padding: 40px 10px;
+    text-align: center;
+    color:$primary-color;
+    p{
+      font: normal 21px 'Basic', sans-serif;
+      margin:0 auto;
+    }
+    p.descTwo{
+      padding-top:30px;
+      max-width:640px;
+    }
+    p:nth-child(1){
+      max-width:400px;
+    }
+    h2{
+      font: normal 21px 'Lobster', cursive;
+      font-size: 60px;
+    }
+
+  }
+  &-desc-images{
+    margin-top: 40px;
+    >div{
+      padding-bottom: 15px;
+    }
+  }
+  &-location-wrapper{
+    position: relative;
+    top:$header-height + px;
+    @include bg-img('red-about-us.png', repeat, center top);
+    background-size: cover;
+    padding: 40px 10px;
+    text-align: center;
+    color:$location-info;
+    h2{
+      font: normal 21px 'Lobster', cursive;
+      font-size: 42px;
+      padding-bottom:15px;
+    }
+    p{
+      font: normal 16px 'Chelsea Market', cursive;
+      padding: 20px 0;
+      margin:0 auto;
+      max-width:720px;
+    }
+    ul{
+      text-align:left;
+      margin: 0 auto;
+      max-width:570px;
+      padding-top:20px;
+      @media (max-width: 640px) {
+        text-align:center;
+      }
+      li{
+        list-style: none;
+        font: bold 20px 'Chelsea Market', cursive;
+        padding-bottom: 10px;
+        span{
+          @extend .inline-block;
+          width:24px;
+          vertical-align: middle;
+        }
+        label{
+          padding-left: 15px;
+          @extend .inline-block;
+          @media (max-width: 640px) {
+            display: block;
+          }
+        }
+        @media (max-width: 640px) {
+          text-align:center;
+        }
+      }
+    }
+  }
+  &-footer{
+    position: relative;
+    top:$header-height + px;
+    background-color: rgba($default-color, 0.9);
+    padding: 40px 0;
+    color: $icons-color;
+    a{
+      margin:0 5px;
+      color: $icons-color;
+      &:hover,&:focus{
+        color: $coporate-color;
+      }
+    }
+    @media (max-width: 460px) {
+      text-align: center;
+    }
+    &-icons{
+      @media (max-width: 460px) {
+        display: block;
+        float: none!important;
+        padding-bottom: 15px;
+      }
+    }
+  }
+}
+.sebm-google-map-container{
+  height:250px;
+}
