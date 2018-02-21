@@ -1,8 +1,8 @@
-.tmp/
-coverage/
-dist/
-node_modules/
-.idea/
-front-end.iml/
-.editorconfig/
-.yo-rc.json/
+/.gitattributes
+/.idea
+/.tmp
+/dist
+/node_modules
+/.editorconfig
+/front-end.iml
+/.yo-rc.json

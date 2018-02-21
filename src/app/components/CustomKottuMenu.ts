@@ -18,7 +18,6 @@ export class CustomKottuMenuComponent {
   public selectedPortionPrice: any;
   public customKottuMenu: number;
   private totalPrice: any;
-  private newMenus
 
   constructor(private menuService: HttpService) {
     this.kImg1 = k1;
@@ -27,10 +26,17 @@ export class CustomKottuMenuComponent {
   getAllCustomMenus(): void {
     this.menuService
       .getAllCustomMenus()
-      .then(menus => this.menus = menus);
+      .then(menus => {this.menus = menus; this.menuService.hideUiBlocker();});
+  }
+
+  AddCustomMenu(): void {
+    this.menuService
+      .getAllCustomMenus()
+      .then(menus => {this.menus.push(...menus); this.menuService.hideUiBlocker();});
   }
 
   ngOnInit(): void {
+    this.menuService.showUiBlocker();
     this.getAllCustomMenus();
     this.selectedCarb = '-1';
     this.selectedPortion = '-1';
@@ -41,6 +47,7 @@ export class CustomKottuMenuComponent {
   }
 
   changePortion(selected: string, obj: object, type: string) {
+    console.log(selected);
     for (let key of Object.keys(obj)) {
       if (selected === obj[key].id) {
         if (type === 'portion') {
@@ -63,7 +70,7 @@ export class CustomKottuMenuComponent {
   }
 
   createNewCustomMenu(model: number, menu: any) {
-    const newA = menu;
-    this.menus.push(newA);
+    this.menuService.showUiBlocker();
+    this.AddCustomMenu();
   }
 }

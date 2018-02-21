@@ -2,7 +2,7 @@
   <div class="container">
     <div class="kottu-labs-custom-kottu-quantity">
       <span>I would like to order
-        <input name="customKottuMenu" type="number" min="1" max="999" placeholder="1" [(ngModel)]="customKottuMenu" (ngModelChange)="createNewCustomMenu(customKottuMenu, menus)"/>
+        <input name="customKottuMenu" type="number" min="1" max="999" placeholder="1" [(ngModel)]="customKottuMenu" (change)="createNewCustomMenu(customKottuMenu, menus)"/>
       </span> kottu portion(s)
     </div>
     <div class="kottu-labs-signature-menu-info">
@@ -11,7 +11,7 @@
       <p>Small Kottu : Serves 200g</p>
     </div>
     <div class="kottu-labs-signature-menu-wrapper row">
-      <div class="col-lg-3" *ngFor="let menu of menus">
+      <div class="col-lg-3" *ngFor="let menu of menus; let i = index;">
         <div class="kottu-labs-signature-menu-item kottu-labs-custom-kottu-menu-item">
           <h3>My Kottu</h3>
           <div class="row">
@@ -20,8 +20,8 @@
             </div>
             <div class="col-md-6 kottu-labs-custom-kottu-select">
               <select [(ngModel)]="this.selectedPortion" (ngModelChange)="changePortion(this.selectedPortion, menu.portions, 'portion')">
-                <option [value]="-1">Select</option>
-                <option *ngFor="let portion of menu.portions" [ngValue]="portion.id" >{{portion.name}}</option>
+                <option [value]="-1" [selected]="selected">Select</option>
+                <option *ngFor="let portion of menu.portions" [ngValue]="portion.id">{{portion.name}}</option>
               </select>
             </div>
           </div>
@@ -40,10 +40,10 @@
               <h4>Dressing</h4>
           </div>
           <div class="row">
-            <div class="col-sm-6" *ngFor="let ingredient of menu.ingredients; let k = index" [ngStyle]="ingredient.type != '1' && {'display': 'none'}">
+            <div class="col-sm-6" *ngFor="let ingredient of menu.ingredients; let k = index;" [ngStyle]="ingredient.type != '1' && {'display': 'none'}">
               <div class="kottu-labs-custom-kottu-check-wrapper" *ngIf="ingredient.type == '1'">
-                <input [attr.name]="ingredient.id" [attr.id]="ingredient.id" type="checkbox" (change)="calculateAddons($event, ingredient.price)" class="kottu-labs-custom-kottu-check"/>
-                <label [attr.for]="ingredient.id" class="kottu-labs-custom-kottu-ingredients">{{ingredient.name}}</label>
+                <input [attr.name]="i.toString()+k.toString()" [attr.id]="i.toString()+k.toString()" type="checkbox" (change)="calculateAddons($event, ingredient.price)" class="kottu-labs-custom-kottu-check"/>
+                <label [attr.for]="i.toString()+k.toString()" class="kottu-labs-custom-kottu-ingredients">{{ingredient.name}}</label>
               </div>
             </div>
           </div>
@@ -51,10 +51,10 @@
             <h4>Protein</h4>
           </div>
           <div class="row">
-            <div class="col-sm-6" style="padding-right:0px" *ngFor="let ingredient of menu.ingredients" [ngStyle]="ingredient.type != '2' && {'display': 'none'}">
+            <div class="col-sm-6" style="padding-right:0px" *ngFor="let ingredient of menu.ingredients; let j = index;" [ngStyle]="ingredient.type != '2' && {'display': 'none'}">
               <div class="kottu-labs-custom-kottu-check-wrapper" *ngIf="ingredient.type == '2'">
-                <input [attr.name]="ingredient.id" [attr.id]="ingredient.id" type="checkbox" [(ngModel)]="ingredient.price" class="kottu-labs-custom-kottu-check"/>
-                <label [attr.for]="ingredient.id" class="kottu-labs-custom-kottu-ingredients">{{ingredient.name}}</label>
+                <input [attr.name]="i.toString()+j.toString()" [attr.id]="i.toString()+j.toString()" type="checkbox" (change)="calculateAddons($event, ingredient.price)" class="kottu-labs-custom-kottu-check"/>
+                <label [attr.for]="i.toString()+j.toString()" class="kottu-labs-custom-kottu-ingredients">{{ingredient.name}}</label>
               </div>
             </div>
           </div>

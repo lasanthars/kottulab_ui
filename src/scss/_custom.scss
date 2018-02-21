@@ -4,6 +4,21 @@ body{
 button[disabled]{
   opacity:0.4;
 }
+#uiBlockerLoader{
+  background-color:rgba($default-color, 0.85);
+  position: fixed;
+  text-align: center;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  color:$primary-color;
+  padding-top:10%;
+  z-index: 999;
+  font: normal 18px 'Chelsea Market', cursive;
+  letter-spacing: 1px;
+  display:none;
+}
 #{$preffix}{
   &-header-wrapper{
     @include bg-img('white-about-us.png', repeat, left top);
